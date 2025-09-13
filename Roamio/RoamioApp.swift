@@ -12,6 +12,7 @@ struct RoamioApp: App {
     var body: some Scene {
         WindowGroup {
             WishlistView()
+            
         }
     }
 }
