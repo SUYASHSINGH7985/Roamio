@@ -50,7 +50,7 @@ struct AccountView: View {
 struct RewardsCardView: View {
     var body: some View {
         HStack {
-            Image(systemName: "r.square.fill") // Placeholder icon
+            Image(systemName: "r.square.fill") 
                 .font(.title)
                 .foregroundColor(.orange)
             
@@ -78,7 +78,7 @@ struct RewardsCardView: View {
 struct PromoKlookCashView: View {
     var body: some View {
         HStack(spacing: 0) {
-            // Promo Codes Section
+            
             VStack {
                 Text("-")
                     .font(.headline)
@@ -87,7 +87,7 @@ struct PromoKlookCashView: View {
             }
             .frame(maxWidth: .infinity)
             
-            // KlookCash Section
+            
             VStack {
                 Text("-")
                     .font(.headline)
@@ -179,18 +179,18 @@ struct ReferralBannerView: View {
             
             Spacer()
             
-            Image(systemName: "gift.fill") // Placeholder graphic
+            Image(systemName: "gift.fill")
                 .font(.system(size: 50))
                 .foregroundColor(.orange)
         }
         .padding()
-        .background(Color(UIColor.systemBlue).opacity(0.1)) // Light blue background
+        .background(Color(UIColor.systemBlue).opacity(0.1))
         .cornerRadius(12)
     }
 }
 
 
-// MARK: - Preview Provider
+
 
 struct ContentView_Previews2: PreviewProvider {
     static var previews: some View {
