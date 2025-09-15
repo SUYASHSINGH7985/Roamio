@@ -1,12 +1,12 @@
 import Foundation
 
-// The Trip struct conforms to Identifiable so it can be used in SwiftUI lists.
+// Defines the structure for a single trip.
 struct Trip: Identifiable {
-    let id = UUID() // Provides a unique identifier for each trip instance.
+    let id = UUID()
     let destination: String
     let date: String
+    let imageName: String // This property is required.
     let status: TripStatus
-    let imageName: String // System name for an SF Symbol to display.
 }
 
 
