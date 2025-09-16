@@ -2,10 +2,16 @@ import SwiftUI
 
 // MARK: - All Bookings View
 struct AllBookingsView: View {
-    // Mock data for the favorite choices
+    // Mock data for the favorite choices (with image names from Assets.xcassets)
     let favoriteChoices: [FavoriteChoice] = [
-        .init(title: "Universal Studios Singapore Ticket", rating: 4.8, reviewCount: "(104,631)"),
-        .init(title: "Eiffel Tower Summit Access", rating: 4.7, reviewCount: "(88,921)")
+        .init(title: "Universal Studios Singapore Ticket",
+              rating: 4.8,
+              reviewCount: "(104,631)",
+              imageName: "universall"),   // <- Add this image in Assets.xcassets
+        .init(title: "Eiffel Tower Summit Access",
+              rating: 4.7,
+              reviewCount: "(88,921)",
+              imageName: "eiffeltowersummit")       // <- Add this image in Assets.xcassets
     ]
     
     // Gradient background
@@ -104,6 +110,7 @@ struct FavoriteChoice: Identifiable {
     let title: String
     let rating: Double
     let reviewCount: String
+    let imageName: String   // NEW
 }
 
 // MARK: - Favorite Choice Card
@@ -112,13 +119,11 @@ struct FavoriteChoiceCard: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Image(systemName: "photo.artframe")
+            Image(choice.imageName)   // NEW
                 .resizable()
-                .scaledToFit()
+                .scaledToFill()
                 .frame(height: 120)
-                .foregroundColor(.white.opacity(0.8))
-                .frame(maxWidth: .infinity)
-                .background(Color.black.opacity(0.2))
+                .clipped()
                 .cornerRadius(12)
             
             Text(choice.title)

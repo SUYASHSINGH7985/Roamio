@@ -105,7 +105,7 @@ struct PromoKlookCashView: View {
                 Text("-")
                     .font(.headline)
                     .foregroundColor(.white)
-                Text("KlookCash")
+                Text("RoamioCash")
                     .font(.subheadline)
                     .foregroundColor(.white.opacity(0.9))
             }
