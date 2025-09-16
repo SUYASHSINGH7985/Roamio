@@ -1,102 +1,147 @@
 import SwiftUI
 
+// MARK: - All Bookings View
 struct AllBookingsView: View {
+    // Mock data for the favorite choices
+    let favoriteChoices: [FavoriteChoice] = [
+        .init(title: "Universal Studios Singapore Ticket", rating: 4.8, reviewCount: "(104,631)"),
+        .init(title: "Eiffel Tower Summit Access", rating: 4.7, reviewCount: "(88,921)")
+    ]
+    
+    // Gradient background
+    private var backgroundGradient = LinearGradient(
+        gradient: Gradient(colors: [Color.lightBlue, Color.deepBlue]),
+        startPoint: .topLeading,
+        endPoint: .bottomTrailing
+    )
+    
+    // Navigation bar appearance
+    init() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithTransparentBackground()
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        UINavigationBar.appearance().compactAppearance = appearance
+        UINavigationBar.appearance().tintColor = .white
+    }
+    
     var body: some View {
-        ScrollView {
-            VStack(spacing: 30) {
-                // "My bookings" dropdown placeholder
-                HStack {
-                    Text("My bookings")
-                        .font(.title2)
-                        .fontWeight(.bold)
-                    Image(systemName: "chevron.down")
-                    Spacer()
-                }
-                .padding(.horizontal)
-                
-                // "Nothing booked yet" section
-                VStack(spacing: 16) {
-                    Image(systemName: "suitcase.cart.fill") // Illustration from screenshot
-                        .font(.system(size: 80))
-                        .foregroundColor(.indigo) // Bluish-purple theme
+        ZStack {
+            backgroundGradient.ignoresSafeArea()
+            
+            ScrollView {
+                VStack(spacing: 40) {
+                    // Header section
+                    VStack(spacing: 15) {
+                        Image(systemName: "suitcase.fill")
+                            .font(.system(size: 50))
+                            .foregroundColor(.white)
+                            .padding(30)
+                            .background(Color.black.opacity(0.1))
+                            .clipShape(Circle())
+                        
+                        Text("Nothing booked yet!")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                        
+                        Text("Start planning your next adventure!")
+                            .font(.headline)
+                            .foregroundColor(.white.opacity(0.8))
+                    }
+                    .padding(.top, 50)
                     
-                    Text("Nothing booked yet!")
-                        .font(.title)
-                        .fontWeight(.bold)
-                    
-                    Text("Start planning your next adventure!")
-                        .font(.body)
-                        .foregroundColor(.secondary)
-                    
-                    // NavigationLink styled as a button, leading to the placeholder ExploreView
+                    // Action Button
                     NavigationLink(destination: ExploreView()) {
                         Text("Start exploring")
-                            .font(.title3)
-                            .fontWeight(.semibold)
+                            .font(.headline)
+                            .fontWeight(.bold)
                             .foregroundColor(.white)
-                            .padding(.vertical, 16)
+                            .padding()
                             .frame(maxWidth: .infinity)
-                            .background(Color.indigo) // Bluish-purple theme
-                            .cornerRadius(14)
+                            .background(
+                                LinearGradient(
+                                    gradient: Gradient(colors: [Color.lightBlue, Color.deepBlue, Color.violet]),
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                )
+                            )
+                            .cornerRadius(12)
                     }
                     .padding(.horizontal)
-                }
-                
-                // "Travelers' favorite choices" section
-                VStack(alignment: .leading, spacing: 16) {
-                    Text("Travelers' favorite choices")
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .padding(.horizontal)
                     
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 16) {
-                            FavoriteChoiceCard()
-                            FavoriteChoiceCard()
-                            FavoriteChoiceCard()
+                    // Travelers' favorite choices section
+                    VStack(alignment: .leading, spacing: 15) {
+                        Text("Travelers' favorite choices")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .padding(.horizontal)
+
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 15) {
+                                ForEach(favoriteChoices) { choice in
+                                    FavoriteChoiceCard(choice: choice)
+                                }
+                            }
+                            .padding(.horizontal)
                         }
-                        .padding(.horizontal)
                     }
                 }
             }
-            .padding(.top)
         }
         .navigationTitle("All bookings")
         .navigationBarTitleDisplayMode(.inline)
-        .background(Color(.systemGroupedBackground).edgesIgnoringSafeArea(.all))
     }
 }
 
-// A helper view for the favorite choice cards shown on the AllBookingsView.
+// MARK: - Favorite Choice Model
+struct FavoriteChoice: Identifiable {
+    let id = UUID()
+    let title: String
+    let rating: Double
+    let reviewCount: String
+}
+
+// MARK: - Favorite Choice Card
 struct FavoriteChoiceCard: View {
+    let choice: FavoriteChoice
+    
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Rectangle()
-                .fill(Color.gray.opacity(0.3))
-                .frame(width: 250, height: 150)
+        VStack(alignment: .leading) {
+            Image(systemName: "photo.artframe")
+                .resizable()
+                .scaledToFit()
+                .frame(height: 120)
+                .foregroundColor(.white.opacity(0.8))
+                .frame(maxWidth: .infinity)
+                .background(Color.black.opacity(0.2))
                 .cornerRadius(12)
-                .overlay(
-                    Image(systemName: "photo.on.rectangle.angled") // Placeholder for image
-                        .font(.largeTitle)
-                        .foregroundColor(.secondary)
-                )
             
-            Text("Universal Studios Singapore Ticket")
+            Text(choice.title)
                 .font(.headline)
+                .foregroundColor(.white)
                 .lineLimit(2)
+                .padding(.top, 5)
             
             HStack {
                 Image(systemName: "star.fill")
-                    .foregroundColor(.indigo) // Bluish-purple theme
-                Text("4.8 (104,631)")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.yellow)
+                Text(String(format: "%.1f", choice.rating))
+                    .foregroundColor(.white)
+                Text(choice.reviewCount)
+                    .foregroundColor(.white.opacity(0.7))
             }
+            .font(.subheadline)
         }
-        .frame(width: 250)
+        .frame(width: 200)
     }
 }
 
+// MARK: - Preview
 struct AllBookingsView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
@@ -104,5 +149,3 @@ struct AllBookingsView_Previews: PreviewProvider {
         }
     }
 }
-
-

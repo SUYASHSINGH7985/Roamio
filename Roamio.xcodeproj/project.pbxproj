@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CA42DC752E76ECA200611E4A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA42DC6F2E76ECA200611E4A /* Preview Assets.xcassets */; };
+		CA42DC772E76ECA200611E4A /* klookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA42DC732E76ECA200611E4A /* klookApp.swift */; };
+		CA42DC782E76ECA200611E4A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA42DC722E76ECA200611E4A /* ContentView.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		CA9232502E753F9900A0596A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,6 +30,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CA42DC6F2E76ECA200611E4A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CA42DC722E76ECA200611E4A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CA42DC732E76ECA200611E4A /* klookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = klookApp.swift; sourceTree = "<group>"; };
 		CA9232422E753F9700A0596A /* Roamio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roamio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA92324F2E753F9900A0596A /* RoamioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoamioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA9232592E753F9900A0596A /* RoamioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoamioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,9 +81,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CA42DC702E76ECA200611E4A /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				CA42DC6F2E76ECA200611E4A /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CA42DC742E76ECA200611E4A /* klook */ = {
+			isa = PBXGroup;
+			children = (
+				CA42DC702E76ECA200611E4A /* Preview Content */,
+				CA42DC722E76ECA200611E4A /* ContentView.swift */,
+				CA42DC732E76ECA200611E4A /* klookApp.swift */,
+			);
+			path = klook;
+			sourceTree = "<group>";
+		};
 		CA9232392E753F9700A0596A = {
 			isa = PBXGroup;
 			children = (
+				CA42DC742E76ECA200611E4A /* klook */,
 				CA9232442E753F9700A0596A /* Roamio */,
 				CA9232522E753F9900A0596A /* RoamioTests */,
 				CA92325C2E753F9900A0596A /* RoamioUITests */,
@@ -212,6 +240,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA42DC752E76ECA200611E4A /* Preview Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +265,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA42DC772E76ECA200611E4A /* klookApp.swift in Sources */,
+				CA42DC782E76ECA200611E4A /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

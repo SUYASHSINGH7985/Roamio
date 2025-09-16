@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CA97D7632E78781900AE9FB3 /* DealsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA97D75F2E78781900AE9FB3 /* DealsPage.swift */; };
+		CA97D7662E78889500AE9FB3 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA97D7652E78889000AE9FB3 /* Color+Extension.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		DA80C1342E76F23300F4CB91 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CA97D75F2E78781900AE9FB3 /* DealsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsPage.swift; sourceTree = "<group>"; };
+		CA97D7652E78889000AE9FB3 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		DA80C1262E76F23100F4CB91 /* ADG2025.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ADG2025.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA80C1332E76F23300F4CB91 /* ADG2025Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ADG2025Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA80C13D2E76F23300F4CB91 /* ADG2025UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ADG2025UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,9 +79,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CA97D75E2E78781900AE9FB3 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CA97D7612E78781900AE9FB3 /* klook */ = {
+			isa = PBXGroup;
+			children = (
+				CA97D75E2E78781900AE9FB3 /* Preview Content */,
+				CA97D75F2E78781900AE9FB3 /* DealsPage.swift */,
+				CA97D7652E78889000AE9FB3 /* Color+Extension.swift */,
+			);
+			path = klook;
+			sourceTree = "<group>";
+		};
 		DA80C11D2E76F23100F4CB91 = {
 			isa = PBXGroup;
 			children = (
+				CA97D7612E78781900AE9FB3 /* klook */,
 				DA80C1282E76F23100F4CB91 /* ADG2025 */,
 				DA80C1362E76F23300F4CB91 /* ADG2025Tests */,
 				DA80C1402E76F23300F4CB91 /* ADG2025UITests */,
@@ -236,6 +261,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA97D7632E78781900AE9FB3 /* DealsPage.swift in Sources */,
+				CA97D7662E78889500AE9FB3 /* Color+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
