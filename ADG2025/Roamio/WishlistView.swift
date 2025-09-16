@@ -23,24 +23,9 @@ struct WishlistView: View {
                     
                     Spacer()
                     
-                    HStack(spacing: 20) {
-                        Button(action: {}) {
-                            Image(systemName: "pencil")
-                                .font(.title2)
-                                .foregroundColor(.white)
-                                .padding(8)
-                                .background(Color.deepBlue.opacity(0.7))
-                                .clipShape(Circle())
-                        }
-                        
-                        Button(action: {}) {
-                            Image(systemName: "folder")
-                                .font(.title2)
-                                .foregroundColor(.white)
-                                .padding(8)
-                                .background(Color.deepBlue.opacity(0.7))
-                                .clipShape(Circle())
-                        }
+                    HStack(spacing: 12) {
+                        CircleIconButton(systemName: "pencil")
+                        CircleIconButton(systemName: "folder")
                     }
                 }
                 .padding(.horizontal, 16)
@@ -51,14 +36,15 @@ struct WishlistView: View {
                 HStack {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 8) {
-                            ForEach(["Genting Highlands", "Chennai", "Attraction", "Tickets", "Tour & Experiences"], id: \.self) { tag in
+                            ForEach(["Genting Highlands", "Chennai", "Attraction", "Tickets", "Tours"], id: \.self) { tag in
                                 Text(tag)
                                     .font(.system(size: 14, weight: .medium))
+                                    .foregroundColor(.deepBlue)
                                     .padding(.horizontal, 12)
                                     .padding(.vertical, 8)
-                                    .background(Color.deepBlue.opacity(0.7))
-                                    .foregroundColor(.white)
+                                    .background(Color.white)
                                     .cornerRadius(20)
+                                    .shadow(color: Color.black.opacity(0.05), radius: 2, x: 0, y: 2)
                             }
                         }
                         .padding(.leading, 16)
@@ -66,17 +52,8 @@ struct WishlistView: View {
                     
                     Spacer()
                     
-                    Button(action: {
-                        // Sort action
-                    }) {
-                        Image(systemName: "arrow.up.arrow.down")
-                            .font(.title3)
-                            .foregroundColor(.white)
-                            .padding(8)
-                            .background(Color.deepBlue.opacity(0.7))
-                            .clipShape(Circle())
-                    }
-                    .padding(.trailing, 16)
+                    CircleIconButton(systemName: "arrow.up.arrow.down")
+                        .padding(.trailing, 16)
                 }
                 .padding(.vertical, 12)
                 
@@ -94,7 +71,7 @@ struct WishlistView: View {
                         )
                         
                         Divider()
-                            .background(Color.white.opacity(0.3))
+                            .background(Color.white.opacity(0.2))
                             .padding(.horizontal, 16)
                         
                         WishlistItemView(
@@ -108,7 +85,7 @@ struct WishlistView: View {
                         )
                         
                         Divider()
-                            .background(Color.white.opacity(0.3))
+                            .background(Color.white.opacity(0.2))
                             .padding(.horizontal, 16)
                         
                         Text("That's all your wishes")
@@ -123,10 +100,11 @@ struct WishlistView: View {
                 Spacer()
             }
         }
-        .navigationBarHidden(true) // This hides the default navigation bar
+        .navigationBarHidden(true) // hide default nav bar
     }
 }
 
+// MARK: - Wishlist Item Card
 struct WishlistItemView: View {
     let imageName: String
     let title: String
@@ -146,74 +124,70 @@ struct WishlistItemView: View {
                     .frame(width: 100, height: 100)
                     .cornerRadius(12)
                     .clipped()
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 12)
-                            .stroke(Color.white.opacity(0.5), lineWidth: 2)
-                    )
-
+                
                 Button(action: {}) {
                     Image(systemName: "heart.fill")
-                        .foregroundColor(.deepBlue)
+                        .foregroundColor(.red)
                         .padding(8)
                         .background(Color.white)
                         .clipShape(Circle())
+                        .shadow(radius: 2)
                 }
                 .padding(6)
             }
-
             
             VStack(alignment: .leading, spacing: 6) {
                 Text(title)
                     .font(.system(size: 15, weight: .semibold))
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
                     .lineLimit(2)
                     .fixedSize(horizontal: false, vertical: true)
                 
                 HStack(spacing: 4) {
                     Image(systemName: "mappin.circle.fill")
                         .font(.system(size: 12))
-                        .foregroundColor(.white.opacity(0.8))
+                        .foregroundColor(.gray)
                     
                     Text(location)
                         .font(.system(size: 12))
-                        .foregroundColor(.white.opacity(0.8))
+                        .foregroundColor(.gray)
                     
                     Text("•")
                         .font(.system(size: 12))
-                        .foregroundColor(.white.opacity(0.6))
+                        .foregroundColor(.gray.opacity(0.6))
                     
                     Text(category)
                         .font(.system(size: 12))
-                        .foregroundColor(.white.opacity(0.8))
+                        .foregroundColor(.gray)
                 }
                 
                 HStack(spacing: 4) {
                     Image(systemName: "star.fill")
                         .font(.system(size: 12))
-                        .foregroundColor(.white)
+                        .foregroundColor(.yellow)
                     
                     Text(String(format: "%.1f", rating))
                         .font(.system(size: 12, weight: .medium))
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
                     
                     Text("(\(reviews.formatted()))")
                         .font(.system(size: 12))
-                        .foregroundColor(.white.opacity(0.7))
+                        .foregroundColor(.gray)
                 }
                 .padding(.top, 4)
                 
                 Text("From ₹\(price, specifier: "%.2f")")
                     .font(.system(size: 16, weight: .bold))
-                    .foregroundColor(.white)
+                    .foregroundColor(.deepBlue)
                     .padding(.top, 8)
                 
                 Button(action: {}) {
                     Text("View Details")
                         .font(.system(size: 12, weight: .medium))
-                        .foregroundColor(.deepBlue)
+                        .foregroundColor(.white)
                         .padding(.horizontal, 12)
                         .padding(.vertical, 6)
-                        .background(Color.white)
+                        .background(Color.deepBlue)
                         .cornerRadius(15)
                 }
                 .padding(.top, 4)
@@ -222,15 +196,31 @@ struct WishlistItemView: View {
             Spacer()
         }
         .padding(16)
-        .background(Color.deepBlue.opacity(0.5))
+        .background(Color.white)
         .cornerRadius(16)
+        .shadow(color: Color.black.opacity(0.1), radius: 6, x: 0, y: 4)
         .padding(.horizontal, 16)
         .padding(.vertical, 8)
     }
 }
 
-struct WishlistView_Previews: PreviewProvider {
-    static var previews: some View {
-        WishlistView()
+// MARK: - Reusable Circle Icon Button
+struct CircleIconButton: View {
+    let systemName: String
+    
+    var body: some View {
+        Button(action: {}) {
+            Image(systemName: systemName)
+                .font(.title3)
+                .foregroundColor(.deepBlue)
+                .padding(10)
+                .background(Color.white)
+                .clipShape(Circle())
+                .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
+        }
     }
+}
+
+#Preview {
+    WishlistView()
 }

@@ -4,6 +4,15 @@ struct RecentlyViewedView: View {
     @Environment(\.dismiss) private var dismiss   // lets us go back
     
     var body: some View {
+        ZStack {
+            // Global gradient background
+            LinearGradient(
+                gradient: Gradient(colors: [.lightBlue, .deepBlue]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .ignoresSafeArea()
+            
             VStack(spacing: 0) {
                 // Custom Header
                 HStack {
@@ -12,13 +21,14 @@ struct RecentlyViewedView: View {
                     }) {
                         Image(systemName: "chevron.left")
                             .font(.title2)
-                            .foregroundColor(.black)
+                            .foregroundColor(.white) // contrast with gradient
                     }
                     
                     Spacer()
                     
                     Text("Recently viewed")
                         .font(.headline)
+                        .foregroundColor(.white) // theme text
                         .frame(maxWidth: .infinity)
                     
                     Spacer()
@@ -31,11 +41,13 @@ struct RecentlyViewedView: View {
                 .padding(.vertical, 12)
                 
                 Divider()
+                    .background(Color.dividerLine) // themed divider
                 
                 ScrollView {
                     VStack(alignment: .leading, spacing: 16) {
                         Text("Earlier")
                             .font(.headline)
+                            .foregroundColor(.white) // theme text
                             .padding(.horizontal)
                         
                         TicketCardView(
@@ -51,7 +63,7 @@ struct RecentlyViewedView: View {
                         )
                         
                         TicketCardView(
-                            imageName: "universal",
+                            imageName: "universall",
                             category: "Theme parks • Singapore",
                             title: "Universal Studios Singapore Ticket",
                             instantConfirmation: true,
@@ -69,7 +81,7 @@ struct RecentlyViewedView: View {
             .navigationBarTitleDisplayMode(.inline)
         }
     }
-
+}
 
 struct TicketCardView: View {
     var imageName: String
@@ -93,19 +105,20 @@ struct TicketCardView: View {
             VStack(alignment: .leading, spacing: 6) {
                 Text(category)
                     .font(.caption)
-                    .foregroundColor(.gray)
+                    .foregroundColor(.textSecondary)
                 
                 Text(title)
                     .font(.headline)
-                    .foregroundColor(.black)
+                    .foregroundColor(.white)
                 
                 if instantConfirmation {
                     Text("Instant confirmation")
                         .font(.caption2)
                         .padding(.horizontal, 6)
                         .padding(.vertical, 2)
-                        .background(Color.gray.opacity(0.2))
+                        .background(Color.white.opacity(0.15))
                         .cornerRadius(4)
+                        .foregroundColor(.white)
                 }
                 
                 HStack(spacing: 4) {
@@ -114,15 +127,16 @@ struct TicketCardView: View {
                         .font(.caption)
                     Text("\(String(format: "%.1f", rating)) (\(reviews.formatted()))")
                         .font(.caption)
+                        .foregroundColor(.white)
                     Text("• \(bookings)")
                         .font(.caption)
-                        .foregroundColor(.gray)
+                        .foregroundColor(.textSecondary)
                 }
                 
                 Text("From \(price)")
                     .font(.subheadline)
                     .fontWeight(.semibold)
-                    .foregroundColor(.black)
+                    .foregroundColor(.white)
                 
                 if let voucher = voucher {
                     Text(voucher)
@@ -139,9 +153,9 @@ struct TicketCardView: View {
             Spacer()
         }
         .padding()
-        .background(Color.white)
+        .background(Color.cardBackground) // translucent card background
         .cornerRadius(12)
-        .shadow(color: .gray.opacity(0.2), radius: 4, x: 0, y: 2)
+        .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
         .padding(.horizontal)
     }
 }

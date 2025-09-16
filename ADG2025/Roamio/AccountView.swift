@@ -29,11 +29,7 @@ struct AccountView: View {
             }
             .background(
                 LinearGradient(
-                    gradient: Gradient(colors: [
-                        Color(red: 135/255, green: 206/255, blue: 250/255), // Sky Blue (light)
-                        Color(red: 72/255, green: 61/255, blue: 139/255),   // Deep Slate Blue (contrast)
-                        Color(red: 138/255, green: 43/255, blue: 226/255)   // Medium Violet
-                    ]),
+                    gradient: Gradient(colors: [.lightBlue, .deepBlue]),
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
                 )
@@ -66,24 +62,25 @@ struct RewardsCardView: View {
         HStack {
             Image(systemName: "r.square.fill")
                 .font(.title)
-                .foregroundColor(.white)
+                .foregroundColor(.blue)
             
             VStack(alignment: .leading) {
                 Text("Roamio Rewards")
                     .font(.headline)
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
                 Text("Get rewarded for exploring and enjoy exclusive deals")
                     .font(.subheadline)
-                    .foregroundColor(.white.opacity(0.9))
+                    .foregroundColor(.gray)
             }
             
             Spacer()
             Image(systemName: "chevron.right")
-                .foregroundColor(.white.opacity(0.8))
+                .foregroundColor(.gray)
         }
         .padding()
-        .background(Color.white.opacity(0.2)) // More visible card
+        .background(Color.white)
         .cornerRadius(12)
+        .shadow(radius: 3)
     }
 }
 
@@ -94,26 +91,27 @@ struct PromoKlookCashView: View {
             VStack {
                 Text("-")
                     .font(.headline)
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
                 Text("Promo codes")
                     .font(.subheadline)
-                    .foregroundColor(.white.opacity(0.9))
+                    .foregroundColor(.gray)
             }
             .frame(maxWidth: .infinity)
             
             VStack {
                 Text("-")
                     .font(.headline)
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
                 Text("RoamioCash")
                     .font(.subheadline)
-                    .foregroundColor(.white.opacity(0.9))
+                    .foregroundColor(.gray)
             }
             .frame(maxWidth: .infinity)
         }
         .padding()
-        .background(Color.white.opacity(0.2))
+        .background(Color.white)
         .cornerRadius(12)
+        .shadow(radius: 3)
     }
 }
 
@@ -122,15 +120,16 @@ struct SettingsSectionView: View {
     var body: some View {
         VStack(spacing: 0) {
             SettingsRowView(iconName: "doc.text", title: "Bookings")
-            Divider().background(Color.white.opacity(0.4)).padding(.leading, 50)
+            Divider().background(Color.gray.opacity(0.3)).padding(.leading, 50)
             SettingsRowView(iconName: "person", title: "My details", subtitle: "Manage your details for bookings, addresses...")
-            Divider().background(Color.white.opacity(0.4)).padding(.leading, 50)
+            Divider().background(Color.gray.opacity(0.3)).padding(.leading, 50)
             SettingsRowView(iconName: "questionmark.circle", title: "Help Center")
-            Divider().background(Color.white.opacity(0.4)).padding(.leading, 50)
+            Divider().background(Color.gray.opacity(0.3)).padding(.leading, 50)
             SettingsRowView(iconName: "gear", title: "Settings")
         }
-        .background(Color.white.opacity(0.2))
+        .background(Color.white)
         .cornerRadius(12)
+        .shadow(radius: 3)
     }
 }
 
@@ -143,23 +142,23 @@ struct SettingsRowView: View {
         HStack(spacing: 16) {
             Image(systemName: iconName)
                 .font(.title3)
-                .foregroundColor(.white)
+                .foregroundColor(.blue)
                 .frame(width: 25)
             
             VStack(alignment: .leading) {
                 Text(title)
                     .font(.body)
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
                 if let subtitle = subtitle {
                     Text(subtitle)
                         .font(.caption)
-                        .foregroundColor(.white.opacity(0.85))
+                        .foregroundColor(.gray)
                 }
             }
             
             Spacer()
             Image(systemName: "chevron.right")
-                .foregroundColor(.white.opacity(0.8))
+                .foregroundColor(.gray)
         }
         .padding()
     }
@@ -173,11 +172,11 @@ struct ReferralBannerView: View {
                 Text("Share joy & get rewarded")
                     .font(.headline)
                     .fontWeight(.bold)
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
                 
                 Text("Get ₹400 for each successful referral!")
                     .font(.subheadline)
-                    .foregroundColor(.white.opacity(0.9))
+                    .foregroundColor(.gray)
                 
                 Button("See details") {
                     // Action
@@ -186,11 +185,7 @@ struct ReferralBannerView: View {
                 .padding(.vertical, 8)
                 .background(
                     LinearGradient(
-                        gradient: Gradient(colors: [
-                            Color(red: 135/255, green: 206/255, blue: 250/255),
-                            Color(red: 72/255, green: 61/255, blue: 139/255),
-                            Color(red: 138/255, green: 43/255, blue: 226/255)
-                        ]),
+                        gradient: Gradient(colors: [.lightBlue, .deepBlue]),
                         startPoint: .topLeading,
                         endPoint: .bottomTrailing
                     )
@@ -204,11 +199,12 @@ struct ReferralBannerView: View {
             
             Image(systemName: "gift.fill")
                 .font(.system(size: 50))
-                .foregroundColor(.white)
+                .foregroundColor(.blue)
         }
         .padding()
-        .background(Color.white.opacity(0.25))
+        .background(Color.white)
         .cornerRadius(12)
+        .shadow(radius: 3)
     }
 }
 
