@@ -6,21 +6,22 @@ struct MainTabView: View {
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
         
-        // Set tab bar background to white for contrast with purple icons
+        // Tab bar background white
         appearance.backgroundColor = UIColor.white
         
-        // Set both selected and unselected items to your violet color
+        // Selected tab color: purple
         appearance.stackedLayoutAppearance.selected.iconColor = UIColor(Color.violet)
         appearance.stackedLayoutAppearance.selected.titleTextAttributes = [
             .foregroundColor: UIColor(Color.violet)
         ]
         
-        appearance.stackedLayoutAppearance.normal.iconColor = UIColor(Color.violet)
+        // Unselected tab color: black
+        appearance.stackedLayoutAppearance.normal.iconColor = .black
         appearance.stackedLayoutAppearance.normal.titleTextAttributes = [
-            .foregroundColor: UIColor(Color.violet)
+            .foregroundColor: UIColor.black
         ]
         
-        // Apply the appearance
+        // Apply appearance
         UITabBar.appearance().standardAppearance = appearance
         if #available(iOS 15.0, *) {
             UITabBar.appearance().scrollEdgeAppearance = appearance
@@ -68,7 +69,7 @@ struct MainTabView: View {
                         Text("Account")
                     }
             }
-            .accentColor(.violet)
+            .accentColor(.violet) // Selected tab accent color
         }
     }
 }

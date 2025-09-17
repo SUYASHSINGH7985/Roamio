@@ -96,7 +96,7 @@ struct IconRow: View {
         ("tram.fill", "Transport"),
         ("car.fill", "Car rentals"),
         ("building.2.fill", "Hotels"),
-        ("simcard", "eSIM"),
+        ("building.columns", "AI Feature"),
         ("square.grid.2x2.fill", "All")
     ]
     var body: some View {
@@ -160,7 +160,7 @@ struct NearbyGemsSection: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 16) {
                     CardView(imageName: "temple1",
-                             title: "Chennai Half Day: Private Guided City Tour",
+                             title: "Chennai Half Day",
                              badge: "Bestselling Tours",
                              price: "₹3699")
                     CardView(imageName: "temple1",
@@ -168,7 +168,7 @@ struct NearbyGemsSection: View {
                              badge: nil,
                              price: "₹2999")
                     CardView(imageName: "temple1",
-                             title: "Marina Beach Walking Tour",
+                             title: "Marina Beach Tour",
                              badge: "Popular",
                              price: "₹999")
                 }
