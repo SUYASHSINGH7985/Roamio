@@ -90,15 +90,17 @@ struct TopSearchBar: View {
 }
 
 // MARK: - Icon Row
+// MARK: - Icon Row
 struct IconRow: View {
     let items: [(String, String)] = [
+        ("building.columns", "AI Feature"),
         ("gearshape.fill", "Things to do"),
         ("tram.fill", "Transport"),
         ("car.fill", "Car rentals"),
         ("building.2.fill", "Hotels"),
-        ("building.columns", "AI Feature"),
         ("square.grid.2x2.fill", "All")
     ]
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text("Categories")
@@ -110,29 +112,13 @@ struct IconRow: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 16) {
                     ForEach(items, id: \.0) { icon, label in
-                        VStack(spacing: 8) {
-                            ZStack {
-                                Circle()
-                                    .fill(Color.white)
-                                    .frame(width: 60, height: 60)
-                                    .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
-                                
-                                LinearGradient(
-                                    gradient: Gradient(colors: [.lightBlue, .deepBlue]),
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
-                                )
-                                .mask(
-                                    Image(systemName: icon)
-                                        .font(.title2)
-                                )
+                        if label == "AI Feature" {
+                            NavigationLink(destination: AIFeatureView()) {
+                                IconItem(icon: icon, label: label)
                             }
-                            Text(label)
-                                .font(.caption)
-                                .lineLimit(1)
-                                .foregroundColor(.white)
+                        } else {
+                            IconItem(icon: icon, label: label)
                         }
-                        .frame(width: 80)
                     }
                 }
                 .padding(.horizontal)
@@ -140,6 +126,39 @@ struct IconRow: View {
         }
     }
 }
+
+// ✅ Extracted reusable IconItem
+struct IconItem: View {
+    let icon: String
+    let label: String
+    
+    var body: some View {
+        VStack(spacing: 8) {
+            ZStack {
+                Circle()
+                    .fill(Color.white)
+                    .frame(width: 60, height: 60)
+                    .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
+                
+                LinearGradient(
+                    gradient: Gradient(colors: [.lightBlue, .deepBlue]),
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+                .mask(
+                    Image(systemName: icon)
+                        .font(.title2)
+                )
+            }
+            Text(label)
+                .font(.caption)
+                .lineLimit(1)
+                .foregroundColor(.white)
+        }
+        .frame(width: 80)
+    }
+}
+
 
 // MARK: - Nearby Gems Section
 struct NearbyGemsSection: View {
